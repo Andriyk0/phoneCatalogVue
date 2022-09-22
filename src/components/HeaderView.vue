@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import '../styles/header.scss'
-
+  
   export default defineComponent({
     data() {
       return {
@@ -25,7 +25,7 @@ import '../styles/header.scss'
 <template>
   <header class="navbar" id="header">
      <nav>
-      <RouterLink to="/home" class="navbar__logo">
+      <RouterLink to="/" class="navbar__logo">
         <img src="../assets/images/LOGO.svg" alt="logoImg" />
       </RouterLink>
       <RouterLink 

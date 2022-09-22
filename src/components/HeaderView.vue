@@ -1,22 +1,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import '../styles/header.scss'
+import { usePathStore } from '../stores/path';
   
   export default defineComponent({
     data() {
       return {
         pathArray: ['home', 'phones', 'tablets', 'acsessories'],
-        path: 'home',
+        storePath: usePathStore(),
       }
     },
     
     methods: {
       changeFavImage():string {
-        return this.path === 'liked_product' ? '/src/assets/images/heart.png' : '/src/assets/images/Vector(Stroke).svg'
+        return this.storePath.path === 'liked_product' ? '/src/assets/images/heart.png' : '/src/assets/images/Vector(Stroke).svg'
       },
 
       linkIsActive(linkPath:string):string {
-        return this.path === linkPath ? 'navbar__is-active navbar__link-active navbar__link' : 'navbar__link'
+        return this.storePath.path === linkPath ? 'navbar__is-active navbar__link-active navbar__link' : 'navbar__link'
       }
     },
   })
@@ -25,7 +26,7 @@ import '../styles/header.scss'
 <template>
   <header class="navbar" id="header">
      <nav>
-      <RouterLink to="/" class="navbar__logo">
+      <RouterLink to="/" class="navbar__logo" @click="storePath.setPath('/')">
         <img src="../assets/images/LOGO.svg" alt="logoImg" />
       </RouterLink>
       <RouterLink 
@@ -33,6 +34,7 @@ import '../styles/header.scss'
         :key="path" 
         :to="path" 
         :class="linkIsActive(path)"
+        @click="storePath.setPath(path)"
       >
         {{ path }}
       </RouterLink>
@@ -42,6 +44,7 @@ import '../styles/header.scss'
         to="liked_product" 
         :class="linkIsActive('liked_product')"
         class="navbar__liked"
+        @click="storePath.setPath('liked_product')"
       >
         <img
             :src="changeFavImage()"
@@ -52,6 +55,7 @@ import '../styles/header.scss'
         to="checkout" 
         :class="linkIsActive('checkout')"
         class="navbar__checkout"
+        @click="storePath.setPath('checkout')"
       >
         <img src="../assets/images/Shoppingbag(Cart).svg" alt="checkout" />
       </RouterLink>

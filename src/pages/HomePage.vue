@@ -1,18 +1,19 @@
 <script lang="ts">
-    import { defineComponent } from 'vue'
-    import '../styles/homePage.scss'
+  import { defineComponent } from 'vue'
+  import '../styles/homePage.scss'
+  import SliderView from '../components/SliderView.vue'
     
-      export default defineComponent({
-        data() {
-          return {
-          }
-        },
-        
-        methods: {
-        },
-      })
-    </script>
+  export default defineComponent({
+    data() {
+        return {};
+    },
+    methods: {},
+    components: { SliderView }
+  })
+</script>
     
-    <template>
-      <h1>HomePage</h1>
-    </template>
+<template>
+  <div class="home">
+    <SliderView />
+  </div>
+</template>

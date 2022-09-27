@@ -2,12 +2,12 @@
   import { defineComponent } from 'vue'
   import '../styles/hotPriceSlider.scss'
   import SliderForProducts from './SliderForProducts.vue'
-  import { useHotProductsStore } from '../stores/hotProducts'
+  import { useAllProductsStore } from '../stores/allProducts'
 
   export default defineComponent({
     data() {
       return {
-        storeHotProducts: useHotProductsStore(),
+        storeAllProducts: useAllProductsStore(),
       };
     },
 
@@ -18,6 +18,6 @@
 <template>
   <section className="hot_price">
     <p className="hot_price__title">Hot price</p>
-    <SliderForProducts :product="storeHotProducts.hotProducts"/>
+    <SliderForProducts :product="storeAllProducts.allProduct.filter(item => item.discount > 0)"/>
   </section>
 </template>

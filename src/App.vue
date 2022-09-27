@@ -5,7 +5,7 @@ import FooterView from './components/FooterView.vue'
 import { defineComponent } from 'vue';
 import type { Product } from './types/types';
 import { getAllProductInfo, getData } from './api/api';
-import { useHotProductsStore } from './stores/hotProducts'
+import { useAllProductsStore } from './stores/allProducts'
 
 export default defineComponent({
   components: {
@@ -16,7 +16,7 @@ export default defineComponent({
 
   data() {
     return {
-      storeHotProducts: useHotProductsStore(),
+      storeAllProducts: useAllProductsStore(),
     }
   },
 
@@ -33,7 +33,7 @@ export default defineComponent({
       return newProduct;
       }));
       
-      this.storeHotProducts.setHotProducts(allProductInfo)
+      this.storeAllProducts.setAllProduct(allProductInfo)
     },
   },
 

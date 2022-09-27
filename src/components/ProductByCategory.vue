@@ -56,9 +56,9 @@ export default defineComponent({
         <p class="prodByCategories__number_of_products">4 models</p>
       </RouterLink>
       <RouterLink
-        to="accessories"
+        to="acsessories"
         class="prodByCategories__link"
-        @click="() => {storePath.setPath('accessories'), goToTop}"
+        @click="() => {storePath.setPath('acsessories'), goToTop}"
       >
         <div class="prodByCategories__accesories_box">
           <img
@@ -67,7 +67,7 @@ export default defineComponent({
             alt=""
           />
         </div>
-        <p class="prodByCategories__image_title">Accessories</p>
+        <p class="prodByCategories__image_title">Acsessories</p>
         <p class="prodByCategories__number_of_products">0 models</p>
       </RouterLink>
     </div>

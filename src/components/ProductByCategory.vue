@@ -2,11 +2,13 @@
 import { defineComponent } from 'vue'
 import '../styles/productByCategory.scss'
 import { usePathStore } from '../stores/path';
+import { useAllProductsStore } from '@/stores/allProducts';
     
 export default defineComponent({
   data() {
     return {
       storePath: usePathStore(),
+      storeAllProducts: useAllProductsStore(),
     }
   },
         
@@ -38,7 +40,7 @@ export default defineComponent({
           />
         </div>
         <p class="prodByCategories__image_title">Mobile phones</p>
-        <p class="prodByCategories__number_of_products">16 models</p>
+        <p class="prodByCategories__number_of_products">{{storeAllProducts.phones.length}} models</p>
       </RouterLink>
       <RouterLink
         to="tablets"
@@ -53,7 +55,7 @@ export default defineComponent({
           />
         </div>
         <p class="prodByCategories__image_title">Tablets</p>
-        <p class="prodByCategories__number_of_products">4 models</p>
+        <p class="prodByCategories__number_of_products">{{storeAllProducts.tablets.length}} models</p>
       </RouterLink>
       <RouterLink
         to="acsessories"
@@ -68,7 +70,7 @@ export default defineComponent({
           />
         </div>
         <p class="prodByCategories__image_title">Acsessories</p>
-        <p class="prodByCategories__number_of_products">0 models</p>
+        <p class="prodByCategories__number_of_products">{{storeAllProducts.acsessories.length}} models</p>
       </RouterLink>
     </div>
   </div>

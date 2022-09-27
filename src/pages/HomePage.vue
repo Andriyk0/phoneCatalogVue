@@ -4,13 +4,14 @@
   import SliderView from '../components/SliderView.vue'
 import HotPriceSlider from '../components/HotPriceSlider.vue'
 import ProductByCategory from '../components/ProductByCategory.vue'
+import NewMobileSlider from '../components/NewMobileSlider.vue'
     
   export default defineComponent({
     data() {
         return {};
     },
     methods: {},
-    components: { SliderView, HotPriceSlider, ProductByCategory }
+    components: { SliderView, HotPriceSlider, ProductByCategory, NewMobileSlider }
   })
 </script>
     
@@ -19,5 +20,6 @@ import ProductByCategory from '../components/ProductByCategory.vue'
     <SliderView />
     <HotPriceSlider />
     <ProductByCategory />
+    <NewMobileSlider />
   </div>
 </template>

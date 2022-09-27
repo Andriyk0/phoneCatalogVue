@@ -4,6 +4,7 @@ import '../styles/likedProductPage.scss'
 import { usePathStore } from '../stores/path'
 import { useLikedProductStore } from '@/stores/likedProduct'
 import type { Product } from '@/types/types'
+import { goToTop, includeProd, isLiked } from '@/myFunction/function'
     
 export default defineComponent({
   data() {
@@ -11,27 +12,9 @@ export default defineComponent({
       storePath: usePathStore(),
       storeLikedProduct: useLikedProductStore(),
       showLikedProduct: [] as Product[],
-    }
-  },
-        
-  methods: {
-    goToTop() {
-      window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-      });
-    },
-
-    includeProd(products:Product[], favProd:Product) {
-      return products.some((item:Product) => item.id === favProd.id);
-    },
-
-    isLiked(products:Product[], liked:Product) {
-      if(this.includeProd(products, liked)) {
-        return '/src/assets/images/heart.png'
-      } else {
-        return '/src/assets/images/Vector(Stroke).svg'
-      }
+      includeProd,
+      isLiked,
+      goToTop,
     }
   },
 })

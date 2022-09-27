@@ -3,6 +3,7 @@ import type { Product } from '@/types/types';
 import { defineComponent } from 'vue'
 import '../styles/sliderForProducts.scss'
 import { useLikedProductStore } from '@/stores/likedProduct';
+import { includeProd, isLiked } from '@/myFunction/function';
       
 export default defineComponent({
   props: {
@@ -17,6 +18,8 @@ export default defineComponent({
       sliderCount: 4,
       showCard: [] as Product[],
       storeLikedProduct: useLikedProductStore(),
+      includeProd,
+      isLiked,
     }
   },
   
@@ -34,24 +37,10 @@ export default defineComponent({
         this.sliderCount -= 4;
       }
     },
-
-    includeProd(products:Product[], favProd:Product) {
-      return products.some((item:Product) => item.id === favProd.id);
-    },
-
-    isLiked(products:Product[], liked:Product) {
-      if(this.includeProd(products, liked)) {
-        return '/src/assets/images/heart.png'
-      } else {
-        return '/src/assets/images/Vector(Stroke).svg'
-      }
-    }
   },
 
   beforeUpdate() {
-    if (this.showCard.length === 0) {
-      this.showCard = [...this.product].splice(0, 4)
-    }
+    this.showCard = [...this.product].splice(0, 4)
   }
 })
 </script>

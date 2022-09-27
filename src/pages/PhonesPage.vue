@@ -12,7 +12,6 @@ export default defineComponent({
           storePath: usePathStore()
         };
     },
-    methods: {},
     components: { ShowProductOnPage }
 })
 </script>

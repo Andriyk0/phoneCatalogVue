@@ -1,21 +1,14 @@
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { goToTop } from '@/myFunction/function';
+import { defineComponent } from 'vue'
   import '../styles/footer.scss'
 
   export default defineComponent({
     data() {
       return {
+        goToTop
       }
     },
-    
-    methods: {
-      goToTop() {
-        window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-        });
-      }
-    }, 
   })
 </script>
     

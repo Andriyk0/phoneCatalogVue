@@ -8,11 +8,11 @@ import ShowProductOnPage from '../components/ShowProductOnPage.vue'
 export default defineComponent({
     data() {
         return {
-            storeTablets: useAllProductsStore(),
-            storePath: usePathStore(),
+          storeTablets: useAllProductsStore(),
+          storePath: usePathStore(),
         };
     },
-    methods: {},
+
     components: { ShowProductOnPage }
 })
 </script>

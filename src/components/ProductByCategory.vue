@@ -3,23 +3,16 @@ import { defineComponent } from 'vue'
 import '../styles/productByCategory.scss'
 import { usePathStore } from '../stores/path';
 import { useAllProductsStore } from '@/stores/allProducts';
+import { goToTop } from '@/myFunction/function';
     
 export default defineComponent({
   data() {
     return {
       storePath: usePathStore(),
       storeAllProducts: useAllProductsStore(),
+      goToTop,
     }
   },
-        
-  methods: {
-    goToTop() {
-        window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-        });
-      }
-    },
 })
 </script>
     

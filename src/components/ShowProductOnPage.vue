@@ -3,6 +3,7 @@ import type { Product } from '@/types/types';
 import { defineComponent } from 'vue'
 import '../styles/showProductsOnPage.scss'
 import { useLikedProductStore } from '@/stores/likedProduct';
+import { goToTop, includeProd, isLiked } from '@/myFunction/function';
     
 export default defineComponent({
   props: {
@@ -22,6 +23,9 @@ export default defineComponent({
       showProduct: [] as Product[],
       numberOfPage: [1],
       storeLikedProduct: useLikedProductStore(),
+      includeProd,
+      goToTop,
+      isLiked,
     }
   },
         
@@ -71,25 +75,6 @@ export default defineComponent({
         this.numberOfPage = [1];
       }
     },
-
-    goToTop() {
-        window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-        });
-    },
-    
-    includeProd(products:Product[], favProd:Product) {
-      return products.some((item:Product) => item.id === favProd.id);
-    },
-
-    isLiked(products:Product[], liked:Product) {
-      if(this.includeProd(products, liked)) {
-        return '/src/assets/images/heart.png'
-      } else {
-        return '/src/assets/images/Vector(Stroke).svg'
-      }
-    }
   },
 
   beforeUpdate() {

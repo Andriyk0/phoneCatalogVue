@@ -21,5 +21,13 @@
 </script>
     
 <template>
-  <CarouselView :carousel_data="sliderItems" />
+  <section className="top_slider">
+    <CarouselView :carousel_data="sliderItems" />
+  </section>
 </template>
+
+<style lang="scss">
+  .top_slider {
+    margin-bottom: 100px; 
+  }
+</style>

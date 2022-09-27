@@ -32,7 +32,7 @@ export default defineComponent({
 
       return newProduct;
       }));
-
+      
       this.storeHotProducts.setHotProducts(allProductInfo)
     },
   },

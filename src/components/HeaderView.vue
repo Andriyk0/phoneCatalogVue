@@ -2,12 +2,14 @@
 import { defineComponent } from 'vue'
 import '../styles/header.scss'
 import { usePathStore } from '../stores/path';
+import { useLikedProductStore } from '@/stores/likedProduct';
   
   export default defineComponent({
     data() {
       return {
         pathArray: ['home', 'phones', 'tablets', 'acsessories'],
         storePath: usePathStore(),
+        storeLikedProduct: useLikedProductStore(),
       }
     },
     
@@ -47,9 +49,10 @@ import { usePathStore } from '../stores/path';
         @click="storePath.setPath('liked_product')"
       >
         <img
-            :src="changeFavImage()"
-            alt="heart"
-          />
+          :src="changeFavImage()"
+          alt="heart"
+        />
+        <div v-if="storeLikedProduct.likedProduct.length > 0 && storePath.path !== 'liked_product'" class="numberOfFavorite">{{storeLikedProduct.likedProduct.length}}</div>
       </RouterLink>
       <RouterLink 
         to="checkout" 

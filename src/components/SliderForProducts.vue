@@ -2,6 +2,7 @@
 import type { Product } from '@/types/types';
 import { defineComponent } from 'vue'
 import '../styles/sliderForProducts.scss'
+import { useLikedProductStore } from '@/stores/likedProduct';
       
 export default defineComponent({
   props: {
@@ -15,6 +16,7 @@ export default defineComponent({
     return {
       sliderCount: 4,
       showCard: [] as Product[],
+      storeLikedProduct: useLikedProductStore(),
     }
   },
   
@@ -32,6 +34,18 @@ export default defineComponent({
         this.sliderCount -= 4;
       }
     },
+
+    includeProd(products:Product[], favProd:Product) {
+      return products.some((item:Product) => item.id === favProd.id);
+    },
+
+    isLiked(products:Product[], liked:Product) {
+      if(this.includeProd(products, liked)) {
+        return '/src/assets/images/heart.png'
+      } else {
+        return '/src/assets/images/Vector(Stroke).svg'
+      }
+    }
   },
 
   beforeUpdate() {
@@ -93,8 +107,11 @@ export default defineComponent({
         <button
           class="mySlider__like_button"
           type="button"
+          @click="!includeProd(storeLikedProduct.likedProduct, item) 
+            ? storeLikedProduct.setLikedProduct(item) 
+            : storeLikedProduct.deleteLikedProduct(item)"
         >
-          <img src="../assets/images/Vector(Stroke).svg" alt="" />
+          <img :src="isLiked(storeLikedProduct.likedProduct, item)" alt="" />
         </button>
       </div>
     </div>

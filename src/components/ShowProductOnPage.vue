@@ -2,6 +2,7 @@
 import type { Product } from '@/types/types';
 import { defineComponent } from 'vue'
 import '../styles/showProductsOnPage.scss'
+import { useLikedProductStore } from '@/stores/likedProduct';
     
 export default defineComponent({
   props: {
@@ -20,6 +21,7 @@ export default defineComponent({
       selectPage: 1,
       showProduct: [] as Product[],
       numberOfPage: [1],
+      storeLikedProduct: useLikedProductStore(),
     }
   },
         
@@ -75,7 +77,19 @@ export default defineComponent({
         top: 0,
         behavior: 'smooth',
         });
+    },
+    
+    includeProd(products:Product[], favProd:Product) {
+      return products.some((item:Product) => item.id === favProd.id);
+    },
+
+    isLiked(products:Product[], liked:Product) {
+      if(this.includeProd(products, liked)) {
+        return '/src/assets/images/heart.png'
+      } else {
+        return '/src/assets/images/Vector(Stroke).svg'
       }
+    }
   },
 
   beforeUpdate() {
@@ -154,11 +168,14 @@ export default defineComponent({
           'Add to cart'
         </button>
         <button
-          class="mySlider__like_button"
-          type="button"
-        >
-          <img src="../assets/images/Vector(Stroke).svg" alt="" />
-        </button>
+            class="mySlider__like_button"
+            type="button"
+            @click="!includeProd(storeLikedProduct.likedProduct, item) 
+              ? storeLikedProduct.setLikedProduct(item) 
+              : storeLikedProduct.deleteLikedProduct(item)"
+          >
+            <img :src="isLiked(storeLikedProduct.likedProduct, item)" alt="" />
+          </button>
       </div>
     </div>
   </div>

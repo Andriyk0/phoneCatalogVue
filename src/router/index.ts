@@ -3,6 +3,7 @@ import CheckoutPageVue from '@/pages/CheckoutPage.vue'
 import HomePageVue from '@/pages/HomePage.vue'
 import LikedProductPageVue from '@/pages/LikedProductPage.vue'
 import PhonesPageVue from '@/pages/PhonesPage.vue'
+import ProductDetailPageVue from '@/pages/ProductDetailPage.vue'
 import TabletsPageVue from '@/pages/TabletsPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/checkout',
       name: 'checkout',
       component: CheckoutPageVue
+    },
+    {
+      path: '/product_details',
+      name: 'product_details',
+      component: ProductDetailPageVue
     }
   ]
 })
